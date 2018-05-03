@@ -15,7 +15,7 @@ public abstract class Organisme implements Item {
 			} else {
 				done = false;
 			}
-			/ blablabla
+			// blablabla
 		}
 	}
 }
