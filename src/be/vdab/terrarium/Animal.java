@@ -1,6 +1,6 @@
 package be.vdab.terrarium;
 
-public abstract class Animal implements Organisme {
+public class Animal implements Organism {
 
 	@Override
 	public char draw() {
