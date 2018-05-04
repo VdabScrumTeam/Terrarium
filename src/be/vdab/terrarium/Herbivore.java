@@ -3,7 +3,7 @@ package be.vdab.terrarium;
 public class Herbivore extends Animal {
 
 	public Herbivore () {
-		this.lifeforce = 1;
+		this.lifeforce = 0;
 	}
 	
 	@Override
