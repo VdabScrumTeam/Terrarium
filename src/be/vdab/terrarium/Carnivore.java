@@ -1,7 +1,6 @@
 package be.vdab.terrarium;
 
-public class Carnivore implements Organism {
-	int lifeforce;
+public class Carnivore extends Animal {
 	
 	public Carnivore () {
 		this.lifeforce = 1;
