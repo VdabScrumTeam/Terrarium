@@ -4,6 +4,7 @@ public class Herbivore extends Animal {
 
 	public Herbivore () {
 		this.lifeForce = 0;
+
 	}
 	
 	@Override
