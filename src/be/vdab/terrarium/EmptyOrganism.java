@@ -1,7 +1,12 @@
 package be.vdab.terrarium;
 
-public class EmptyOrganism implements Organism{
+public class EmptyOrganism extends Organism{
 
+	
+	public EmptyOrganism(Coordinate coordinate) {
+		super(coordinate);
+		
+	}
 	@Override
 	public char draw() {
 		return '.';

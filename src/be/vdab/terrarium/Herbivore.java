@@ -2,7 +2,8 @@ package be.vdab.terrarium;
 
 public class Herbivore extends Animal {
 
-	public Herbivore () {
+	public Herbivore (Coordinate coordinate) {
+		super(coordinate);
 		this.lifeforce = 0;
 	}
 	
@@ -11,7 +12,7 @@ public class Herbivore extends Animal {
 		return 'H';
 	}
 	
-	public Herbivore sex() {
-		return new Herbivore();
-	}
+//	public Herbivore sex() {
+//		return new Herbivore();
+//	}
 }
