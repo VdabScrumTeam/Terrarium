@@ -39,7 +39,7 @@ public class Terrarium {
 		while(!isFound) {
 			if(organisms[coordinate[0]][coordinate[1]] instanceof EmptyOrganism ) {
 				isFound = true;
-				System.out.println(coordinate[0]+ ", " + coordinate[1]);
+				//System.out.println(coordinate[0]+ ", " + coordinate[1]);
 			}else {
 				coordinate[0] = rand.nextInt(rows);
 				coordinate[1] = rand.nextInt(cols);
@@ -48,7 +48,7 @@ public class Terrarium {
 		return coordinate;
 	}
 	
-	public void add(Organism org, int[] coordinates) {
+	private void add(Organism org, int[] coordinates) {
 		organisms[coordinates[0]][coordinates[1]] = org;
 	}
 	
