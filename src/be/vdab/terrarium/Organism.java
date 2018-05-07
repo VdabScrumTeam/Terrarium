@@ -3,9 +3,11 @@ package be.vdab.terrarium;
 public abstract class Organism {
 	
 	public Coordinate coordinate;
+	public int lifeforce;
 	
 	public Organism(Coordinate coordinate) {
 		this.coordinate = coordinate;
+		this.lifeforce = 0;
 	}
 	
 	public Coordinate getCoordinate() {
