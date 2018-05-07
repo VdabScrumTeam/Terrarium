@@ -39,7 +39,15 @@ public class Terrarium {
 	}
 	
 	private void letItEat(Organism eater, Organism lunchOnTheRight) {
-		
+		if (eater instanceof Herbivore && lunchOnTheRight instanceof Plant) {
+			eater.lifeforce += lunchOnTheRight.lifeforce;
+			delete(lunchOnTheRight);
+		} else if (eater instanceof Carnivore && lunchOnTheRight instanceof Herbivore) {
+				eater.lifeforce += lunchOnTheRight.lifeforce;
+				delete(lunchOnTheRight);
+		} else {
+			// niks te eten
+		}
 	}
 	
 	private void letThemFight(Organism fighterOnTheLeft, Organism fighterOnTheRight) {
