@@ -94,12 +94,12 @@ public class Terrarium {
 	}
 	
 	public void move(Organism orgaantje) {
-		// random getal "richting" van 1-4
-		Random rand = new Random();
-		int richting = rand.nextInt(4)+1;
-		// switch volgens "richting"
-		boolean moved = false;
 		while (!moved) {
+			// random getal "richting" van 1-4
+			Random rand = new Random();
+			int richting = rand.nextInt(4)+1;
+			// switch volgens "richting"
+			boolean moved = false;
 			switch (richting) {
 				case 1:
 					if (orgaantje.getCoordinate().getRow() == 0) { break; }
