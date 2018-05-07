@@ -160,7 +160,7 @@ public class Terrarium {
 					Organism north = organisms[orgaantje.getCoordinate().getRow()-1][orgaantje.getCoordinate().getCol()];
 					if (north instanceof EmptyOrganism) {
 						organisms[orgaantje.getCoordinate().getRow()-1][orgaantje.getCoordinate().getCol()] = orgaantje;
-						orgaantje.setCoordinate(north.getCoordinate());
+						organisms[orgaantje.getCoordinate().getRow()-1][orgaantje.getCoordinate().getCol()].setCoordinate(north.getCoordinate());
 						delete(orgaantje);
 						moved = true;
 					} else {
@@ -171,7 +171,7 @@ public class Terrarium {
 					if (orgaantje.getCoordinate().getCol() == 5) { break; }
 					Organism east = organisms[orgaantje.getCoordinate().getRow()][orgaantje.getCoordinate().getCol()+1];
 					organisms[orgaantje.getCoordinate().getRow()][orgaantje.getCoordinate().getCol()+1] = orgaantje;
-					orgaantje.setCoordinate(east.getCoordinate());
+					organisms[orgaantje.getCoordinate().getRow()][orgaantje.getCoordinate().getCol()+1].setCoordinate(east.getCoordinate());
 					delete(orgaantje);
 					moved = true;
 					break;
@@ -180,7 +180,7 @@ public class Terrarium {
 					Organism south = organisms[orgaantje.getCoordinate().getRow()+1][orgaantje.getCoordinate().getCol()];
 					if (south instanceof EmptyOrganism) {
 						organisms[orgaantje.getCoordinate().getRow()+1][orgaantje.getCoordinate().getCol()] = orgaantje;
-						orgaantje.setCoordinate(south.getCoordinate());
+						organisms[orgaantje.getCoordinate().getRow()+1][orgaantje.getCoordinate().getCol()].setCoordinate(south.getCoordinate());
 						delete(orgaantje);
 						moved = true;
 					} else {
@@ -192,7 +192,7 @@ public class Terrarium {
 					Organism west = organisms[orgaantje.getCoordinate().getRow()][orgaantje.getCoordinate().getCol()-1];
 					if (west instanceof EmptyOrganism) {
 						organisms[orgaantje.getCoordinate().getRow()][orgaantje.getCoordinate().getCol()-1] = orgaantje;
-						orgaantje.setCoordinate(west.getCoordinate());
+						organisms[orgaantje.getCoordinate().getRow()][orgaantje.getCoordinate().getCol()-1].setCoordinate(west.getCoordinate());
 						delete(orgaantje);
 						moved = true;
 					} else {
