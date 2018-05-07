@@ -71,10 +71,10 @@ public class Terrarium {
 		while (!moved) {
 			switch (n) {
 				case 1:
-					if (orgaantje.coordinate.row == 0) { break; }
-					north = Organism[orgaantje.coordinate.row-1][orgaantje.coordinate.column];
-					if north.instanceOf(EmptyOrganism) {
-						Organism[orgaantje.coordinate.row-1][orgaantje.coordinate.column] = orgaantje;
+					if (orgaantje.coordinates.rows == 0) { break; }
+					Organism north = organisms[orgaantje.coordinates.rows-1][orgaantje.coordinates.cols];
+					if (north.instanceOf(EmptyOrganism)) {
+						organisms[orgaantje.coordinates.rows-1][orgaantje.coordinates.cols] = orgaantje;
 						delete(orgaantje);
 						moved = true;
 					} else {
@@ -82,15 +82,15 @@ public class Terrarium {
 					}
 					break;
 				case 2:
-					Organism[orgaantje.coordinate.row][orgaantje.coordinate.column+1] = orgaantje;
+					organisms[orgaantje.coordinates.rows][orgaantje.coordinates.cols+1] = orgaantje;
 					delete(orgaantje);
 					moved = true;
 					break;
 				case 3:
-					if (orgaantje.coordinate.row == 5) { break; }
-					south = Organism[orgaantje.coordinate.row+1][orgaantje.coordinate.column];
-					if south.instanceOf(EmptyOrganism) {
-						Organism[orgaantje.coordinate.row+1][orgaantje.coordinate.column] = orgaantje;
+					if (orgaantje.coordinates.rows == 5) { break; }
+					Organism south = organisms[orgaantje.coordinates.rows+1][orgaantje.coordinates.cols];
+					if (south.instanceOf(EmptyOrganism)) {
+						organisms[orgaantje.coordinates.rows+1][orgaantje.coordinates.cols] = orgaantje;
 						delete(orgaantje);
 						moved = true;
 					} else {
@@ -98,10 +98,10 @@ public class Terrarium {
 					}
 					break;
 				case 4:
-					if (orgaantje.coordinate.column == 0) { break; }
-					east = Organism[orgaantje.coordinate.row][orgaantje.coordinate.column+1];
-					if east.instanceOf(EmptyOrganism) {
-						Organism[orgaantje.coordinate.row][orgaantje.coordinate.column+1] = orgaantje;
+					if (orgaantje.coordinates.cols == 0) { break; }
+					organisms east = Organism[orgaantje.coordinates.rows][orgaantje.coordinates.cols+1];
+					if (east.instanceOf(EmptyOrganism)) {
+						organisms[orgaantje.coordinates.rows][orgaantje.coordinates.cols+1] = orgaantje;
 						delete(orgaantje);
 						moved = true;
 					} else {
@@ -110,5 +110,9 @@ public class Terrarium {
 					break;
 			}
 		}
+	}
+	
+	public void delete(Organism orgie) {
+		// TODO
 	}
 }
