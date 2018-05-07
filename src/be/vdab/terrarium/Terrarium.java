@@ -61,4 +61,58 @@ public class Terrarium {
 		}
 	}
 
+	
+	public void move(Organism orgaantje) {
+		// random getal "richting" van 1-4
+		Random rand = new Random();
+		int richting = rand.nextInt(4)+1;
+		// switch volgens "richting"
+		boolean moved = false;
+		while (!moved) {
+			switch (n) {
+				case 1:
+					if (orgaantje.coordinates.rows == 0) { break; }
+					Organism north = organisms[orgaantje.coordinates.rows-1][orgaantje.coordinates.cols];
+					if (north.instanceOf(EmptyOrganism)) {
+						organisms[orgaantje.coordinates.rows-1][orgaantje.coordinates.cols] = orgaantje;
+						delete(orgaantje);
+						moved = true;
+					} else {
+						moved = false;
+					}
+					break;
+				case 2:
+					organisms[orgaantje.coordinates.rows][orgaantje.coordinates.cols+1] = orgaantje;
+					delete(orgaantje);
+					moved = true;
+					break;
+				case 3:
+					if (orgaantje.coordinates.rows == 5) { break; }
+					Organism south = organisms[orgaantje.coordinates.rows+1][orgaantje.coordinates.cols];
+					if (south.instanceOf(EmptyOrganism)) {
+						organisms[orgaantje.coordinates.rows+1][orgaantje.coordinates.cols] = orgaantje;
+						delete(orgaantje);
+						moved = true;
+					} else {
+						moved = false;
+					}
+					break;
+				case 4:
+					if (orgaantje.coordinates.cols == 0) { break; }
+					organisms east = Organism[orgaantje.coordinates.rows][orgaantje.coordinates.cols+1];
+					if (east.instanceOf(EmptyOrganism)) {
+						organisms[orgaantje.coordinates.rows][orgaantje.coordinates.cols+1] = orgaantje;
+						delete(orgaantje);
+						moved = true;
+					} else {
+						moved = false;
+					}
+					break;
+			}
+		}
+	}
+	
+	public void delete(Organism orgie) {
+		// TODO
+	}
 }
