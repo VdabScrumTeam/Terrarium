@@ -43,7 +43,7 @@ public class Terrarium {
 	}
 	
 	private void letThemFight(Organism fighterOnTheLeft, Organism fighterOnTheRight) {
-		
+		if(fighterOnTheLeft.)
 	}
 		
 	private void letThemMakeLove() {
