@@ -32,8 +32,30 @@ public class Terrarium {
 	
 	public void nextDay() {
 		for(int i = 0; i < rows; i++) {
-			for(int j = 0; j < cols; j++) {
-				
+			for(int j = 0; j < cols-1; j++) {
+				System.out.println(i + ", " + j);
+				if(organisms[i][j] instanceof Herbivore) {
+					if(organisms[i][j+1] instanceof Herbivore) {
+						letThemMakeLove();
+					}
+					if(organisms[i][j+1] instanceof Plant) {
+						letItEat(organisms[i][j], organisms[i][j+1]);
+					}
+					if(organisms[i][j+1] instanceof EmptyOrganism) {
+						move(organisms[i][j]);
+					}
+				}
+				if(organisms[i][j] instanceof Carnivore) {
+					if(organisms[i][j+1] instanceof Herbivore) {
+						letItEat(organisms[i][j], organisms[i][j+1]);
+					}
+					if(organisms[i][j+1] instanceof Carnivore) {
+						letThemFight(organisms[i][j], organisms[i][j+1]);
+					}
+					if(organisms[i][j+1] instanceof EmptyOrganism) {
+						move(organisms[i][j]);
+					}
+				}
 			}
 		}
 	}

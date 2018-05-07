@@ -16,7 +16,10 @@ public class TerrariumMain {
 			keuze = sc.nextLine();
 			while(!keuze.equalsIgnoreCase("S")) {
 				if(keuze.isEmpty()) {
-					System.out.println("next day");
+					System.out.println("A new day at the zoo!");
+					terrarium.nextDay();
+					terrarium.draw();
+					
 					System.out.println("Druk <ENTER> voor een nieuwe dag of S en <ENTER> om te stoppen");
 				}else {
 					System.out.println("Foute keuze! Druk <ENTER> voor een nieuwe dag of S en <ENTER> om te stoppen");
