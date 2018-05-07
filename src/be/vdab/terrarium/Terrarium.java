@@ -43,7 +43,11 @@ public class Terrarium {
 	}
 	
 	private void letThemFight(Organism fighterOnTheLeft, Organism fighterOnTheRight) {
-		if(fighterOnTheLeft.)
+		if(fighterOnTheLeft.getLifeforce() > fighterOnTheRight.getLifeforce()) {
+			fighterOnTheLeft.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
+		}else if(fighterOnTheRight.getLifeforce() > fighterOnTheLeft.getLifeforce()){
+			fighterOnTheRight.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
+		}
 	}
 		
 	private void letThemMakeLove() {
