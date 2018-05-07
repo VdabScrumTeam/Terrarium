@@ -7,6 +7,14 @@ public class Animal extends Organism {
 		super(coordinate);
 	}
 	
+	public int getLifeforce() {
+		return lifeforce;
+	}
+
+	public void setLifeforce(int lifeforce) {
+		this.lifeforce = lifeforce;
+	}
+
 	@Override
 	public char draw() {
 		return 0;
