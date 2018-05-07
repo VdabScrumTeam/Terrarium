@@ -2,7 +2,8 @@ package be.vdab.terrarium;
 
 public class Carnivore extends Animal {
 	
-	public Carnivore () {
+	public Carnivore (Coordinate coordinate) {
+		super(coordinate);
 		this.lifeforce = 0;
 	}
 	
