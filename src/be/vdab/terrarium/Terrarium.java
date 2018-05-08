@@ -54,20 +54,25 @@ public class Terrarium {
 			}
 		}
 		
-		//try {
-			
+		try {
 			add(new Plant(getFreeLocation()));
-			//System.out.println("add plant");
+		}catch(IllegalArgumentException e) {
+			System.out.println("Geen lege plaatsen meer");
+		}
+		try {
 			add(new Plant(getFreeLocation()));
-			//System.out.println("add plant");
+		}catch(IllegalArgumentException e) {
+			System.out.println("Geen lege plaatsen meer");
+		}
+		try {
 			add(new Plant(getFreeLocation()));
-			//System.out.println("add plant");
-		//}catch(IllegalArgumentException e) {
-			//System.out.println("fout opgetreden");
-		//}
+		}catch(IllegalArgumentException e) {
+			System.out.println("Geen lege plaatsen meer");
+		}
 		
+	}	
 		
-	}
+	
 	
 	private void letItEat(Organism eater, Organism lunchOnTheRight) {
 		if (eater instanceof Herbivore && lunchOnTheRight instanceof Plant) {
@@ -119,8 +124,11 @@ public class Terrarium {
 	private Coordinate getFreeLocation() {
 		//Vrije locatie in de array vinden.
 		
+		Coordinate coordinate;
+		if(!isLocationFree()) { 
+			coordinate = new Coordinate(-1,-1);
+		}else {
 			Random rand = new Random();
-			Coordinate coordinate;
 			coordinate = new Coordinate(rand.nextInt(rows),rand.nextInt(cols));
 			boolean isFound = false;
 			while(!isFound) {
@@ -131,9 +139,8 @@ public class Terrarium {
 					coordinate = new Coordinate(rand.nextInt(rows),rand.nextInt(cols));
 				}
 			}
-		
+		}
 		return coordinate;
-		
 	}
 	
 	private void add(Organism org) {
@@ -144,7 +151,7 @@ public class Terrarium {
 		}
 		
 	}
-	
+		
 	public void draw() {
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
