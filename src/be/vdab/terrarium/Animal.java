@@ -1,7 +1,11 @@
 package be.vdab.terrarium;
 
-public class Animal implements Organism {
-	int lifeforce = 0;
+public class Animal extends Organism {
+	
+	
+	public Animal(Coordinate coordinate) {
+		super(coordinate);
+	}
 	
 	@Override
 	public char draw() {

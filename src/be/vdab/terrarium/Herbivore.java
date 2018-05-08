@@ -2,9 +2,9 @@ package be.vdab.terrarium;
 
 public class Herbivore extends Animal {
 
-	public Herbivore () {
-		this.lifeForce = 0;
-
+	public Herbivore (Coordinate coordinate) {
+		super(coordinate);
+		this.lifeforce = 0;
 	}
 	
 	@Override
@@ -12,7 +12,7 @@ public class Herbivore extends Animal {
 		return 'H';
 	}
 	
-	public Herbivore sex() {
-		return new Herbivore();
-	}
+//	public Herbivore sex() {
+//		return new Herbivore();
+//	}
 }
