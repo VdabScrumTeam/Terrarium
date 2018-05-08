@@ -14,8 +14,12 @@ public abstract class Organism {
 	}
 
 	public Organism(Coordinate coordinate) {
-		this.coordinate = coordinate;
-		this.lifeforce = 0;
+		if(coordinate.getRow() != -1) {
+			this.coordinate = coordinate;
+			this.lifeforce = 0;
+		}else {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	public Coordinate getCoordinate() {
