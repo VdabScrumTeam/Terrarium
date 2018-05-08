@@ -117,7 +117,7 @@ public class Terrarium {
 	}
 	
 	private Coordinate getFreeLocation() {
-		//Vrije locatie in de array vinden.
+		//Vrije locatie in de array vinden
 		
 			Random rand = new Random();
 			Coordinate coordinate;
