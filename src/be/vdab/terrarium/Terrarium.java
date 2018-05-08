@@ -31,8 +31,8 @@ public class Terrarium {
 			add(new Carnivore(getFreeLocation()));
 			add(new Carnivore(getFreeLocation()));
 			add(new Carnivore(getFreeLocation()));
-			add(new Carnivore(getFreeLocation()));
-			//add(new Carnivore(new Coordinate(3, 3)));
+			
+			
 		}catch(IllegalArgumentException e) {
 			
 		}
@@ -154,18 +154,12 @@ public class Terrarium {
 		}
 	}
 	
+
 	public Organism[][] getOrganisms() {
 		return organisms;
 	}
 
-	
-
-//	public void move2(Organism org) {
-//		Coordinate huidigePos = org.getCoordinate();
-//		Coordinate nieuwePos = new Coordinate(huidigePos.getRow(), huidigePos.getCol()+1);
-//		swapOrganisms(huidigePos, nieuwePos);
-//	}	
-	
+		
 	private void swapOrganisms(Coordinate c1, Coordinate c2) {
 		//Swap objects
 				Organism temp = organisms[c1.getRow()][c1.getCol()];
