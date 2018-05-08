@@ -15,7 +15,7 @@ public abstract class Organism {
 
 	public Organism(Coordinate coordinate) {
 		if(coordinate.getRow() != -1) {
-			this.coordinate = coordinate;
+			this.setCoordinate(coordinate);
 			this.lifeforce = 0;
 		}else {
 			throw new IllegalArgumentException();
