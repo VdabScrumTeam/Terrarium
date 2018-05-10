@@ -4,7 +4,6 @@ public class Carnivore extends Animal {
 	
 	public Carnivore (Coordinate coordinate) {
 		super(coordinate);
-		this.lifeforce = 0;
 	}
 	
 	@Override
@@ -13,6 +12,6 @@ public class Carnivore extends Animal {
 	}
 	
 	public void vecht(Carnivore carnivoreToTheRight) {
-		this.lifeforce = this.lifeforce + carnivoreToTheRight.lifeforce;
+		this.setLifeforce(this.getLifeforce() + carnivoreToTheRight.getLifeforce());
 	}
 }
