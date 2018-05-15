@@ -4,8 +4,9 @@ public class Plant extends Organism {
 
 	public Plant(Coordinate coordinate) {
 		super(coordinate);
-		this.lifeforce = 1;
+		this.setLifeforce(1);
 	}
+		
 	@Override
 	public char draw() {
 		return 'P';
