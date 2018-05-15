@@ -3,7 +3,7 @@ package be.vdab.terrarium;
 public abstract class Organism {
 	
 	private Coordinate coordinate;
-	private int lifeforce = 0;
+	private int lifeforce = 1;
 	
 	public Organism(Coordinate coordinate) {
 		this.setCoordinate(coordinate);

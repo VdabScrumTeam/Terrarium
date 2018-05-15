@@ -31,6 +31,9 @@ public class Terrarium {
 			add(new Carnivore(getFreeLocation()));
 			add(new Carnivore(getFreeLocation()));
 			add(new Carnivore(getFreeLocation()));
+			add(new Human(getFreeLocation()));
+			add(new Human(getFreeLocation()));
+			add(new Human(getFreeLocation()));
 			
 			
 		}catch(IllegalArgumentException e) {
@@ -80,14 +83,36 @@ public class Terrarium {
 	}
 	
 	private void letThemFight(Organism fighterOnTheLeft, Organism fighterOnTheRight) {
+		//links Carnivoor en rechts Carnivoor
 		if(fighterOnTheLeft instanceof Carnivore && fighterOnTheRight instanceof Carnivore) {
 			if(fighterOnTheLeft.getLifeforce() > fighterOnTheRight.getLifeforce()) {
 				fighterOnTheLeft.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
 			}else if(fighterOnTheRight.getLifeforce() > fighterOnTheLeft.getLifeforce()){
 				fighterOnTheRight.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
 			}
-		}
-		
+			
+		} else {
+			//links mens en rechts Carnivoor
+			if(fighterOnTheLeft instanceof Human && fighterOnTheRight instanceof Carnivore) {
+				if(fighterOnTheLeft.getLifeforce() >= fighterOnTheRight.getLifeforce()) {
+					fighterOnTheLeft.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
+				}else if(fighterOnTheRight.getLifeforce() > fighterOnTheLeft.getLifeforce()){
+					fighterOnTheRight.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
+				}
+			}
+			else {
+				
+			}
+				//links Carnivoor en rechts Mens
+				if (fighterOnTheLeft instanceof Carnivore && fighterOnTheRight instanceof Human) {
+					if(fighterOnTheRight.getLifeforce() >= fighterOnTheLeft.getLifeforce()) {
+						fighterOnTheRight.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
+					}else if(fighterOnTheLeft.getLifeforce() > fighterOnTheRight.getLifeforce()){
+						fighterOnTheRight.setLifeforce(fighterOnTheLeft.getLifeforce() + fighterOnTheRight.getLifeforce());
+					}
+			
+				}
+		}	
 	}
 		
 	private void letThemMakeLove(Organism lover1, Organism lover2) {
@@ -146,7 +171,9 @@ public class Terrarium {
 	public void draw() {
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
-				System.out.print(organisms[i][j].draw()+ "   ");
+			//System.out.print(organisms[i][j].draw()+ "   ");
+				System.out.print(organisms[i][j].draw()+ "(" + organisms[i][j].getLifeforce()+ ")" + "   ");
+				
 			}
 			System.out.println();
 		}
@@ -169,7 +196,7 @@ public class Terrarium {
 	}
 	
 	public void move(Organism orgaantje, Organism orgaantje2) {
-		if((orgaantje instanceof Herbivore || orgaantje instanceof Carnivore) & orgaantje2 instanceof EmptyOrganism) {
+		if((orgaantje instanceof Herbivore || orgaantje instanceof Carnivore || orgaantje instanceof Human) & orgaantje2 instanceof EmptyOrganism) {
 			boolean moved = false;
 			Coordinate huidigePos = orgaantje.getCoordinate();
 			Coordinate nieuwePos;
