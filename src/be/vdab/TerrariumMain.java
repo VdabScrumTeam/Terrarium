@@ -18,7 +18,7 @@ public class TerrariumMain {
 			keuze = sc.nextLine();
 			while(!keuze.equalsIgnoreCase("S")) {
 				if(keuze.isEmpty()) {
-					//System.out.println("A new day at the zoo!");
+					
 					terrarium.nextDay();
 					
 					//terrarium.move2(terrarium.getOrganisms()[3][3]);
