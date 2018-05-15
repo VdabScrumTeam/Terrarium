@@ -23,14 +23,14 @@ public class Terrarium {
 		}
 		//toevoegen van 2 planten, 2 herbivoren en 2 carnivoren
 		try {
-			add(new Plant(getFreeLocation()));
-			add(new Plant(getFreeLocation()));
-			add(new Herbivore(getFreeLocation()));
-			add(new Herbivore(getFreeLocation()));
-			add(new Herbivore(getFreeLocation()));
-			add(new Carnivore(getFreeLocation()));
-			add(new Carnivore(getFreeLocation()));
-			add(new Carnivore(getFreeLocation()));
+			add(new Plant(getCoordinate()));
+			add(new Plant(getCoordinate()));
+			add(new Herbivore(getCoordinate()));
+			add(new Herbivore(getCoordinate()));
+			add(new Herbivore(getCoordinate()));
+			add(new Carnivore(getCoordinate()));
+			add(new Carnivore(getCoordinate()));
+			add(new Carnivore(getCoordinate()));
 			
 			
 		}catch(IllegalArgumentException e) {
@@ -56,11 +56,11 @@ public class Terrarium {
 		
 		//try {
 			
-			add(new Plant(getFreeLocation()));
+			add(new Plant(getCoordinate()));
 			//System.out.println("add plant");
-			add(new Plant(getFreeLocation()));
+			add(new Plant(getCoordinate()));
 			//System.out.println("add plant");
-			add(new Plant(getFreeLocation()));
+			add(new Plant(getCoordinate()));
 			//System.out.println("add plant");
 		//}catch(IllegalArgumentException e) {
 			//System.out.println("fout opgetreden");
@@ -92,14 +92,13 @@ public class Terrarium {
 		
 	private void letThemMakeLove(Organism lover1, Organism lover2) {
 		if(lover1 instanceof Herbivore && lover2 instanceof Herbivore) {
-			add(new Herbivore(getFreeLocation()));
+			add(new Herbivore(getCoordinate()));
 		}
 		
 	}
 	private boolean isLocationFree() {
+		//Check if there is a free location within the organisms array
 		int teller = 0;
-		
-		
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
 				if(organisms[i][j] instanceof EmptyOrganism) {
@@ -107,18 +106,16 @@ public class Terrarium {
 				}
 			}
 		}
-		if(teller == 0) {
-			return false;
-		}else {
-			return true;
-		}
+		return (teller == 0) ? false : true;
 	}
 	
-	private Coordinate getFreeLocation() {
-		//Vrije locatie in de array vinden...
-		
+	private Coordinate getCoordinate() {
+		//Return a coordinate of free location within terrarium. If full coordinate = -1,-1 
+		Coordinate coordinate;
+		if(!isLocationFree()) { 
+			coordinate = new Coordinate(-1,-1);
+		}else {
 			Random rand = new Random();
-			Coordinate coordinate;
 			coordinate = new Coordinate(rand.nextInt(rows),rand.nextInt(cols));
 			boolean isFound = false;
 			while(!isFound) {
@@ -129,9 +126,8 @@ public class Terrarium {
 					coordinate = new Coordinate(rand.nextInt(rows),rand.nextInt(cols));
 				}
 			}
-		
+		}
 		return coordinate;
-		
 	}
 	
 	private void add(Organism org) {
