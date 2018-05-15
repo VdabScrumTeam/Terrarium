@@ -2,8 +2,12 @@ package be.vdab.terrarium;
 
 public abstract class Organism {
 	
-	public Coordinate coordinate;
-	public int lifeforce;
+	private Coordinate coordinate;
+	private int lifeforce = 0;
+	
+	public Organism(Coordinate coordinate) {
+		this.setCoordinate(coordinate);
+	}
 	
 	public int getLifeforce() {
 		return lifeforce;
@@ -12,22 +16,15 @@ public abstract class Organism {
 	public void setLifeforce(int lifeforce) {
 		this.lifeforce = lifeforce;
 	}
-
-	public Organism(Coordinate coordinate) {
-		if(coordinate.getRow() != -1) {
-			this.setCoordinate(coordinate);
-			this.lifeforce = 0;
-		}else {
-			throw new IllegalArgumentException();
-		}
-	}
 	
 	public Coordinate getCoordinate() {
 		return coordinate;
 	}
 
 	public void setCoordinate(Coordinate coordinate) {
-		this.coordinate = coordinate;
+		if(coordinate != null) {
+			this.coordinate = coordinate;
+		}
 	}
 
 	public abstract char draw();
