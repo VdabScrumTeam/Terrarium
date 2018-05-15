@@ -7,7 +7,8 @@ public class Terrarium {
 	private int rows = 6;
 	private int cols = 6;
 	private Organism[][] organisms = new Organism[rows][cols];
-	
+	private int organismCount = 0;
+	private int dayCount = 1;
 	
 	public Terrarium() {
 		init();
@@ -22,8 +23,6 @@ public class Terrarium {
 			}
 		}
 		//toevoegen van 2 planten, 2 herbivoren en 2 carnivoren
-		try {
-
 			add(new Plant(getCoordinate()));
 			add(new Plant(getCoordinate()));
 			add(new Herbivore(getCoordinate()));
@@ -32,18 +31,17 @@ public class Terrarium {
 			add(new Carnivore(getCoordinate()));
 			add(new Carnivore(getCoordinate()));
 			add(new Carnivore(getCoordinate()));
-      add(new Human(getCoordinate()));
 			add(new Human(getCoordinate()));
 			add(new Human(getCoordinate()));
-			
-			
-		}catch(IllegalArgumentException e) {
-			
-		}
-		
+			add(new Human(getCoordinate()));
+				
 	}
 	
-	public void nextDay() {
+	public void nextDay() throws TerrariumException {
+		
+		//increase day counter
+		this.dayCount++;
+		
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols-1; j++) {
 				
@@ -58,18 +56,15 @@ public class Terrarium {
 			}
 		}
 		
-		//try {
-			
-			add(new Plant(getCoordinate()));
-			//System.out.println("add plant");
-			add(new Plant(getCoordinate()));
-			//System.out.println("add plant");
-			add(new Plant(getCoordinate()));
-			//System.out.println("add plant");
-		//}catch(IllegalArgumentException e) {
-			//System.out.println("fout opgetreden");
-		//}
+		//Add three plants
+		add(new Plant(getCoordinate()));
+		add(new Plant(getCoordinate()));
+		add(new Plant(getCoordinate()));
 		
+		//Throw Exception when terrarium is full
+		if(this.organismCount >= (this.rows * this.cols) ) {
+			throw new TerrariumException("\nTerrarium is volgelopen, programma wordt beëindigd");
+		}
 		
 	}
 	
@@ -158,14 +153,18 @@ public class Terrarium {
 	
 	private void add(Organism org) {
 		
-		if(org != null && isLocationFree()) {
+		//Only adds an organism to the terrarium if it has VALID coordinates (!= -1,-1)
+		if(org != null && org.getCoordinate().getRow() != -1) {
 			organisms[org.getCoordinate().getRow()][org.getCoordinate().getCol()] = org;
-			
+			//increase organism count
+			this.organismCount++;
 		}
 		
 	}
 	
 	public void draw() {
+		System.out.println("Dag " + dayCount + ":");
+		System.out.println("*********\n");
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
 			//System.out.print(organisms[i][j].draw()+ "   ");
@@ -258,7 +257,8 @@ public class Terrarium {
 		// TODO
 		Coordinate c = org.getCoordinate();
 		organisms[c.getRow()][c.getCol()] = new EmptyOrganism(c);
-		
+		//decrease organism count
+		this.organismCount--;
 	}
 
 }
