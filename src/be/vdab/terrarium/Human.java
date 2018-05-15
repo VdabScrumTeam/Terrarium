@@ -1,15 +1,17 @@
 package be.vdab.terrarium;
 
-public class Plant extends Organism {
-
-	public Plant(Coordinate coordinate) {
+public class Human extends Organism {
+	
+	public Human(Coordinate coordinate) {
 		super(coordinate);
 		
 	}
-		
+	
 	@Override
 	public char draw() {
-		return 'P';
+		return 'M';
 	}
 	
+	
+
 }
